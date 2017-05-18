@@ -33,4 +33,7 @@ node {
     stage("Tag image") {
         openshiftTag srcStream: appName, srcTag: "latest", destStream: appName, destTag: pom.version, alias: "false"
     }
+    stage("Print env variables") {
+        sh "printenv"
+    }
 }
