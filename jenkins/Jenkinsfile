@@ -30,4 +30,7 @@ node {
         }
         openshiftDeploy deploymentConfig: appName, namespace: project
     }
+    stage("Tag image") {
+        openshiftTag srcStream: appName, srcTag: "latest", destStream: appName, destTag: pom.version, alias: "false"
+    }
 }
