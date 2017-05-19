@@ -6,6 +6,11 @@ node {
         project = env.PROJECT_NAME
     }
 }
+node("gradle") {
+    stage("Print gradle version") {
+        sh "gradle --version"
+    }
+}
 node("maven") {
     stage("Checkout") {
         git url: "https://github.com/tjololo/springboot-sample-app.git", branch: "master"
