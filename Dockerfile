@@ -7,6 +7,4 @@ FROM springboot:latest
 
 #ENV JAR_FILE app.jar
 
-EXPOSE 8080/tcp
 
-ENTRYPOINT ["java","-version"]
