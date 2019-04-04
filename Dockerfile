@@ -1,13 +1,11 @@
 FROM openjdk:8
-LABEL maintainer="Emertyl <lremy@is4ri.com>"
 
-#COPY runjar.sh /usr/local/runjar.sh
+COPY runjar.sh /usr/local/bin/runjar.sh
+COPY target/app.jar /usr/local/app.jar
+RUN chmod +x /usr/local/bin/runjar.sh
 
-RUN echo "#!/bin/bash\n" >/usr/local/runjar.sh
-RUN echo "java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production -jar /tmp/$JAR_FILE" >>/usr/local/runjar.sh
-
-RUN chmod +x /usr/local/runjar.sh
-
-ENV JAR_FILE app.jar
+ENV JAR_FILE /usr/local/app.jar
 
 EXPOSE 8080/tcp
+
+ENTRYPOINT ["runjar.sh"]
