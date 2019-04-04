@@ -12,4 +12,4 @@ ENV JAR_FILE app.jar
 
 EXPOSE 8080/tcp
 
-ENTRYPOINT ["/usr/local/runjar.sh"]
+ENTRYPOINT ["echo Hello!"]
