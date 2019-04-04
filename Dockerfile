@@ -8,4 +8,4 @@ FROM springboot:latest
 #ENV JAR_FILE app.jar
 
 
-CMD["java","-jar","/opt/app-root/src/source/target/app.jar"]
+#CMD["java","-jar","/opt/app-root/src/source/target/app.jar"]
