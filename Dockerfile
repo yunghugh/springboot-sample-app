@@ -8,4 +8,4 @@ FROM s2i-java:latest
 #ENV JAR_FILE app.jar
 
 
-CMD["java","-version"]
+#CMD["java","-version"]
