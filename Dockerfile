@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM springboot:latest
 
 #RUN echo "#!/bin/bash\n" >/usr/local/runjar.sh
 #RUN echo "java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production -jar /tmp/$JAR_FILE" >>/usr/local/runjar.sh
@@ -9,4 +9,4 @@ FROM openjdk:8
 
 EXPOSE 8080/tcp
 
-ENTRYPOINT ["echo","Hello!"]
+ENTRYPOINT ["java","-version"]
