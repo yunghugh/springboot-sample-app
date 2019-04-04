@@ -1,11 +1,12 @@
 FROM openjdk:8
 
-#COPY ./runjar.sh /usr/local/bin/runjar.sh
-#COPY ./target/app.jar /usr/local/app.jar
-#RUN chmod +x /usr/local/bin/runjar.sh
+#RUN echo "#!/bin/bash\n" >/usr/local/runjar.sh
+#RUN echo "java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production -jar /tmp/$JAR_FILE" >>/usr/local/runjar.sh
 
-#ENV JAR_FILE /usr/local/app.jar
+#RUN chmod +x /usr/local/runjar.sh
 
-#EXPOSE 8080/tcp
+#ENV JAR_FILE app.jar
 
-#ENTRYPOINT ["runjar.sh"]
+EXPOSE 8080/tcp
+
+ENTRYPOINT ["echo","Hello!"]
