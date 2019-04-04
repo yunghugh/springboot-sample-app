@@ -1,4 +1,4 @@
-FROM springboot:latest
+FROM openjdk:8
 
 #RUN echo "#!/bin/bash\n" >/usr/local/runjar.sh
 #RUN echo "java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production -jar /tmp/$JAR_FILE" >>/usr/local/runjar.sh
@@ -9,3 +9,8 @@ FROM springboot:latest
 
 
 #CMD["java","-version"]
+
+COPY ./target /usr/src/myapp
+WORKDIR /usr/src/myapp
+RUN javac Main.java
+CMD ["java", "Main"]
