@@ -1,4 +1,4 @@
-FROM s2i-java:latest
+FROM springboot:latest
 
 #RUN echo "#!/bin/bash\n" >/usr/local/runjar.sh
 #RUN echo "java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production -jar /tmp/$JAR_FILE" >>/usr/local/runjar.sh
