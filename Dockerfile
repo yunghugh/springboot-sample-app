@@ -11,5 +11,3 @@ RUN chmod +x /usr/local/runjar.sh
 ENV JAR_FILE app.jar
 
 EXPOSE 8080/tcp
-
-ENTRYPOINT ["echo Hello!"]
