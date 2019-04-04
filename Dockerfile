@@ -1,4 +1,4 @@
-FROM springboot:latest
+FROM s2i-java:latest
 
 #RUN echo "#!/bin/bash\n" >/usr/local/runjar.sh
 #RUN echo "java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production -jar /tmp/$JAR_FILE" >>/usr/local/runjar.sh
@@ -8,4 +8,4 @@ FROM springboot:latest
 #ENV JAR_FILE app.jar
 
 
-#CMD["java","-jar","/opt/app-root/src/source/target/app.jar"]
+CMD["java","-version"]
