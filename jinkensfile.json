@@ -1,0 +1,50 @@
+def appName = "springboot-test"
+def project = ""
+def pom
+def mvn="/tmp/apache-maven-3.6.0/bin/mvn"
+node {
+    stage("Initialize") {
+        project = env.PROJECT_NAME
+    }
+}
+node {
+    stage("Checkout") {
+        git url: "https://github.com/yunghugh/springboot-sample-app.git", branch: "master"
+    }
+    stage("Get mvn") {
+        sh "wget -O /tmp/apache-maven-3.6.0-bin.zip http://mirrors.shu.edu.cn/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip "
+        sh "unzip -o /tmp/apache-maven-3.6.0-bin.zip -d /tmp"
+        sh "pwd"
+    }
+    stage("Gather buildfacts") {
+        pom = readMavenPom file: 'pom.xml'
+    }
+    stage("Build JAR") {
+        sh "${mvn} clean package -Popenshift"
+        stash name: "jar", includes: "target/app.jar"
+    }
+    stage("Build Image") {
+        unstash name: "jar"
+        sh "pwd"
+        
+        sh "mkdir target/dest"
+        sh "cp runjar.sh target/dest/runjar.sh"
+        sh "cp target/app.jar target/dest/app.jar"
+        
+        
+        sh "oc delete bc ${appName} --ignore-not-found"
+        sh "oc delete is ${appName} --ignore-not-found"
+        sh "cat Dockerfile | oc new-build -D - --name ${appName}"
+        
+        sh "oc start-build ${appName} --from-dir=target/dest --follow"
+    }
+    stage("Tag image") {
+        sh "echo ${project}"
+        sh "oc tag ${appName} ${appName}:latest"
+    }
+    stage("Deploy") {
+        sh "oc delete dc ${appName} --ignore-not-found"
+        sh "oc delete svc ${appName} --ignore-not-found"
+        sh "oc new-app ${appName}:latest --allow-missing-imagestream-tags"
+    }
+}
