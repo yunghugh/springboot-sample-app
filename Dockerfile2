@@ -9,7 +9,7 @@ FROM s2i-java:latest
 
 
 #CMD["java","-version"]
-
+COPY ./target/dest /usr/src
 #COPY ./target /usr/src/myapp
 #WORKDIR /usr/src/myapp
 #RUN cat "public class Main {public static void main(String[] args){System.out.println(\"Hello ~\"); } }" >Main.java
