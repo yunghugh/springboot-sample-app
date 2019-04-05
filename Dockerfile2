@@ -8,7 +8,7 @@ FROM s2i-java:latest
 #ENV JAR_FILE app.jar
 
 
-CMD["java","-version"]
+#CMD["java","-version"]
 
 #COPY ./target /usr/src/myapp
 #WORKDIR /usr/src/myapp
