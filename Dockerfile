@@ -10,7 +10,7 @@ FROM s2i-java:latest
 
 #CMD["java","-version"]
 
-COPY ./target /usr/src/myapp
-WORKDIR /usr/src/myapp
-RUN javac Main.java
-CMD ["java", "Main"]
+#COPY ./target /usr/src/myapp
+#WORKDIR /usr/src/myapp
+#RUN javac Main.java
+CMD ["java", "-version"]
