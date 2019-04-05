@@ -12,6 +12,6 @@ FROM s2i-java:latest
 
 #COPY ./target /usr/src/myapp
 #WORKDIR /usr/src/myapp
-RUN cat "public class Main {public static void main(String[] args){System.out.println(\"Hello ~\"); } }" >Main.java
-RUN javac Main.java
+#RUN cat "public class Main {public static void main(String[] args){System.out.println(\"Hello ~\"); } }" >Main.java
+#RUN javac Main.java
 #CMD ["java", "Main"]
