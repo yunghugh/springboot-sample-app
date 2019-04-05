@@ -1,4 +1,4 @@
-FROM s2i-java:latest
+FROM sprinboot:latest
 
 #RUN echo "#!/bin/bash\n" >/usr/local/runjar.sh
 #RUN echo "java -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production -jar /tmp/$JAR_FILE" >>/usr/local/runjar.sh
@@ -13,4 +13,4 @@ FROM s2i-java:latest
 #COPY ./target /usr/src/myapp
 #WORKDIR /usr/src/myapp
 #RUN javac Main.java
-CMD ["java", "-version"]
+#CMD ["java", "-version"]
